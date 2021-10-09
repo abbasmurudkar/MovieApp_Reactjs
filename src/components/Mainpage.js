@@ -6,7 +6,7 @@ const Mainpage = ({ children }) => {
     return (
         <div>
             <Title title={"Movies_App"} subtitle={"Looking for movie here it is"}/>
-            <Nav />
+            <Nav/>
             {children}
         </div>
     )
