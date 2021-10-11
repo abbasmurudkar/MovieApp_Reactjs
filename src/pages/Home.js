@@ -2,6 +2,8 @@ import React from 'react'
 import Mainpage from '../components/Mainpage'
 import { useState } from 'react'
 import {getapi} from '../misc/Api'
+import ShowsGrid from '../components/shows/ShowsGrid';
+import ActorsGrid from '../components/actors/ActorsGrid';
 const Home = () => {
 const [text, settext] = useState('')
 const [results, setresult] = useState(null)
@@ -33,20 +35,7 @@ if(results && results.length === 0)
 }
 if(results && results.length > 0)
 {
-    return results[0].show ? results.map((items)=>{
-        return(
-            <div key={items.show.id}>
-                {items.show.name}
-            </div>
-        )
-       }):
-       results.map((items)=>{
-        return(
-            <div key={items.person.id}>
-                {items.person.name}
-            </div>
-        )
-       })
+    return results[0].show ? <ShowsGrid data={results}/>:<ActorsGrid data={results}/>
 }
 return null
 }
