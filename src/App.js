@@ -2,6 +2,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import Starred from './pages/Starred';
+import Showsid from './components/shows/Showsid';
 function App() {
   return (
       <Switch>
@@ -10,6 +11,9 @@ function App() {
         </Route>
         <Route exact path="/starred">
           <Starred />
+        </Route>
+        <Route exact path="/show/:id" >
+          <Showsid/>
         </Route>
         <Route >
           ERROR FOR 404
