@@ -2,7 +2,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import Starred from './pages/Starred';
-import Showsid from './components/shows/Showsid';
+import Showsid from './pages/Showsid';
 function App() {
   return (
       <Switch>

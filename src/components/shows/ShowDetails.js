@@ -1,16 +1,16 @@
 import React from 'react'
+import { DetailsWrapper } from './ShowDetails.styled'
 
 const ShowDetails = ({status,premiered,network}) => {
     return (
-        <div>
-            <h1>DETAILS</h1>
+        <DetailsWrapper>
 <p>
     status: <span>{status}</span>
 </p>
 <p>
     Premeired {premiered} {network? `on ${network.name}`:null}
 </p>
-        </div>
+        </DetailsWrapper>
     )
 }
 

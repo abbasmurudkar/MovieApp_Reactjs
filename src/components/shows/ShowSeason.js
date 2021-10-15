@@ -1,9 +1,9 @@
 import React from 'react'
+import { SeasonList, SeasonsWrapper } from './ShowSeason.styled'
 
 const ShowSeason = ({seasons}) => {
     return (
-        <div>
-            <h1>SEASONS</h1>
+        <SeasonsWrapper>
             <p>
             Seasons in total: <span>{seasons.length}</span>
             </p>
@@ -13,17 +13,17 @@ const ShowSeason = ({seasons}) => {
                     {seasons.reduce((accee,seasons)=> accee + seasons.episodeOrder,0)}  {/*total number of episodes by using reduce*/}
                 </span>
             </p>
-            <div>
+            <SeasonList>
                 {seasons.map((season)=>{
                     return(
-                    <div key={season.id}>
-                        <div>
+                    <div key={season.id} className="season-item">
+                        <div className="left">
                             <p>{season.number}</p>
                             <p>
                                 Episode:<span>{season.episodeOrder}</span>
                             </p>
                         </div>
-                        <div>
+                        <div className="right">
                             Aired : {' '}
                             <span>
                                 {season.premiereDate} - {season.endDate}
@@ -32,8 +32,8 @@ const ShowSeason = ({seasons}) => {
                     </div>
                     )
                 })}
-            </div>
-        </div>
+            </SeasonList>
+        </SeasonsWrapper>
     )
 }
 

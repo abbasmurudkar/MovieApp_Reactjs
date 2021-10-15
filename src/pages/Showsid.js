@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from 'react'
 import { useParams } from 'react-router-dom'
-import { getapi } from '../../misc/Api';
-import ShowCast from './ShowCast';
-import ShowDetails from './ShowDetails';
-import ShowMainData from './ShowMainData';
-import ShowSeason from './ShowSeason';
+import { getapi } from '../misc/Api';
+import ShowCast from '../components/shows/ShowCast';
+import ShowDetails from '../components/shows/ShowDetails';
+import ShowMainData from '../components/shows/ShowMainData';
+import ShowSeason from '../components/shows/ShowSeason';
+import { InfoBlock, ShowPageWrapper } from './show.styled';
 const Showsid = () => {
     const { id } = useParams();
 
@@ -58,18 +59,21 @@ console.log(show)
         return <div>Error Message:{error}</div>
     }
     return (
-        <div>
+        <ShowPageWrapper>
             <ShowMainData image={show.image} name={show.name} rating={show.rating} tags={show.genres} summary={show.summary} />
-            <div>
+            <InfoBlock>
+            <h2>Details</h2>
                 <ShowDetails status={show.status} premiered={show.premiered} network={show.network}/>
-            </div>
-            <div>
+            </InfoBlock>
+            <InfoBlock>
+            <h2>Seasons</h2>
                 <ShowSeason seasons={show._embedded.seasons}/>
-            </div>
-            <div>
+            </InfoBlock>
+            <InfoBlock>
+            <h2>Cast</h2>
                 <ShowCast cast={show._embedded.cast}/>
-            </div>
-        </div>
+            </InfoBlock>
+        </ShowPageWrapper>
     )
 }
 
