@@ -2,7 +2,9 @@ import React from 'react'
 import ShowsCard from './ShowsCard'
 import Image_Not_Found from '../../assets/image.png'
 import { FlexGird } from '../Styled'
+import { useShows } from '../../misc/Custom-hooks'
 const ShowsGrid = ({ data }) => {
+    const[staredShow,dispatchstarred] = useShows()
     return (
         <FlexGird>
             {

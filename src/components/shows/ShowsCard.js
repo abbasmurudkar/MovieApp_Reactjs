@@ -15,7 +15,7 @@ const ShowsCard = ({id,name,summary,image,onStarclick}) => {
 
             <div className="btns">
                 <Link to={`/show/${id}`}>Read more</Link>
-                <button onClick={onStarclick}>Star me</button>
+                <button>Star me</button>
             </div>
         </Styleshowcard>
     )
