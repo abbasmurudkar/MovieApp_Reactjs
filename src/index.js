@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
-
+import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>    {/* it is used for using the app.js as main page instead router write this in index.js */}
@@ -15,3 +15,4 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+serviceWorker.register();
