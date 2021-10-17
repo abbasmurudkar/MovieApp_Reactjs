@@ -4,8 +4,9 @@ import { useState } from 'react'
 import {getapi} from '../misc/Api'
 import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+import { useLastQuery } from '../misc/Custom-hooks';
 const Home = () => {
-const [text, settext] = useState('')
+const [text, settext] = useLastQuery()  //previously it was usestate
 const [results, setresult] = useState(null)
 const [searchoptions, setsearchoptions] = useState('shows')
 const ischecked = searchoptions === "shows";
