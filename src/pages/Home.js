@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import Mainpage from '../components/Mainpage'
 import { useState } from 'react'
 import { getapi } from '../misc/Api'
@@ -39,9 +39,10 @@ const Home = () => {
         }
         return null
     }
-    const radiochange = (ev) => {
+    const radiochange = useCallback(  (ev) => { 
         setsearchoptions(ev.target.value)
-    }
+    },[]) 
+     
     // console.log(searchoptions)
     return (
         <Mainpage>
