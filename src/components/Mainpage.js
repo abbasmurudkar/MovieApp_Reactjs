@@ -5,7 +5,7 @@ import Title from './Title'
 const Mainpage = ({ children }) => {
     return (
         <div>
-            <Title title={"Movies_App"} subtitle={"Looking for movie here it is"}/>
+            <Title title={"MoviesApp"} subtitle={"Looking for movie here it is"}/>
             <Nav/>
             {children}
         </div>
