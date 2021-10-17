@@ -6,16 +6,17 @@ import ShowsGrid from '../components/shows/ShowsGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
 import { useLastQuery } from '../misc/Custom-hooks';
 import { RadioInputsWrapper, SearchButtonWrapper, SearchInput } from './Home.styled';
+import CustomRadio from '../components/CustomRadio';
 const Home = () => {
-    const [text, settext] = useLastQuery()  //previously it was usestate
+    const [input, setinput] = useLastQuery()  //previously it was usestate
     const [results, setresult] = useState(null)
     const [searchoptions, setsearchoptions] = useState('shows')
     const ischecked = searchoptions === "shows";
     const Inputtext = (ev) => {
-        settext(ev.target.value)
+        setinput(ev.target.value)
     }
     const OnSearch = () => {
-        getapi(`/search/${searchoptions}?q=${text}`).then(result => {
+        getapi(`/search/${searchoptions}?q=${input}`).then(result => {
             setresult(result)
             console.log(result)
         })
@@ -41,29 +42,39 @@ const Home = () => {
     const radiochange = (ev) => {
         setsearchoptions(ev.target.value)
     }
-    console.log(searchoptions)
+    // console.log(searchoptions)
     return (
         <Mainpage>
-            <SearchInput type="text" onChange={Inputtext} text={text} onKeyDown={onkeydown} ></SearchInput>
-         
-            {DisplayResult()}
+            <SearchInput
+            type="text" 
+            onChange={Inputtext} 
+            value={input} 
+            onKeyDown={onkeydown} 
+            />
             <RadioInputsWrapper>
                 <div>
-                    <label htmlFor="search-movies">
-                        Movies
-                        <input id="search-movies" checked={ischecked} type="radio" value="shows" onChange={radiochange} />
-                    </label>
+                    <CustomRadio
+                    label="Shows"
+                        id="search-movies"
+                        checked={ischecked}
+                        onChange={radiochange}
+                        value="shows"
+                    />
                 </div>
                 <div>
-                    <label htmlFor="search-actors">
-                        Actors
-                        <input id="search-actors" checked={!ischecked} type="radio" value="people" onChange={radiochange} />
-                    </label>
+                <CustomRadio
+                    label="Actors"
+                        id="search-actors"
+                        checked={!ischecked}
+                        onChange={radiochange}
+                        value="people"
+                    />
                 </div>
             </RadioInputsWrapper>
             <SearchButtonWrapper>
-           <button type="button" onClick={OnSearch}>Search</button>
-               </SearchButtonWrapper> 
+                <button type="button" onClick={OnSearch}>Search</button>
+            </SearchButtonWrapper>
+            {DisplayResult()}
         </Mainpage>
     );
 };
