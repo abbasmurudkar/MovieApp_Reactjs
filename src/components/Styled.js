@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-
-export const FlexGird = styled.div`
+import FadeIn from 'react-fade-in/lib/FadeIn';
+export const FlexGird = styled(FadeIn)`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
